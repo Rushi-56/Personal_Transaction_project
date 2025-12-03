@@ -6,7 +6,12 @@ const userRoutes = require("./routes/userRoutes");
 const transactionRoutes = require("./routes/transactionRoutes");
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: ["https://pt-frontend-9153.onrender.com", "http://localhost:3000"],
+  methods: "GET,POST,PUT,DELETE",
+  allowedHeaders: "Content-Type,Authorization"
+}));
+
 app.use(bodyParser.json());
 
 app.use("/api/users", userRoutes);
